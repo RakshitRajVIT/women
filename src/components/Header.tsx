@@ -80,7 +80,7 @@ export const Header: React.FC<HeaderProps> = ({
 
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-xl font-bold tracking-tight text-white">Aegis<span className="text-rose-500">Safety</span></h1>
+                <h1 className="text-xl font-bold tracking-tight text-white">Empower<span className="text-rose-500">Safety</span></h1>
                 <span className={`text-xs px-2 py-0.5 rounded-full font-semibold ${getBadgeColor()}`}>
                   {isSosActive ? 'EMERGENCY SOS' : `${threatLevel} THREAT`}
                 </span>

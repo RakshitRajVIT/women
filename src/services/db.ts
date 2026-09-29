@@ -54,7 +54,7 @@ export interface AppSettings {
   autoSendWhatsapp: boolean;
 }
 
-class AegisDatabase extends Dexie {
+class EmpowerSafetyDatabase extends Dexie {
   evidenceLogs!: Table<EvidenceRecord>;
   guardianContacts!: Table<GuardianContact>;
   riskZones!: Table<RiskZone>;
@@ -62,7 +62,7 @@ class AegisDatabase extends Dexie {
   appSettings!: Table<AppSettings>;
 
   constructor() {
-    super('Empower SafetyDB');
+    super('EmpowerSafetyDB');
     
     // Support version 1 & 2 for backwards compatibility without breaking existing DB
     this.version(1).stores({
@@ -82,7 +82,7 @@ class AegisDatabase extends Dexie {
   }
 }
 
-export const db = new AegisDatabase();
+export const db = new EmpowerSafetyDatabase();
 
 // Dynamic risk zones generated relative to real user position
 export function getDynamicRiskZones(lat: number, lng: number): RiskZone[] {
