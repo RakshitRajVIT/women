@@ -82,6 +82,13 @@ export function App() {
 
     initData();
 
+    // Auto-enable Voice AI danger detector and Motion Shake detector on page load
+    aiDangerDetector.startVoiceDetection().then((active) => {
+      setIsVoiceActive(active);
+    }).catch((err) => console.warn('Auto Voice AI start warning:', err));
+
+    aiDangerDetector.startMotionDetection();
+
     // Trigger browser's native Location Permission prompt immediately on page load
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition(
