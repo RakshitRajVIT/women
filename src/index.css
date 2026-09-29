@@ -1,0 +1,88 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-100 font-sans antialiased min-h-screen selection:bg-rose-500 selection:text-white;
+  }
+}
+
+/* Custom Leaflet Map Dark Styling */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  background-color: #090d16 !important;
+  font-family: inherit;
+  border-radius: 0.75rem;
+}
+
+.leaflet-tile {
+  filter: brightness(0.7) invert(1) contrast(1.3) hue-rotate(200deg) saturate(0.4);
+}
+
+.leaflet-control-container .leaflet-routing-container {
+  display: none !important;
+}
+
+/* Custom Pulsing SOS & Radar Animations */
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7);
+  }
+  70% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 25px rgba(244, 63, 94, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(244, 63, 94, 0);
+  }
+}
+
+.animate-sos-pulse {
+  animation: pulse-ring 1.8s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes radar-scan {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-radar {
+  animation: radar-scan 4s linear infinite;
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-danger {
+  background: rgba(153, 27, 27, 0.25);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(71, 85, 105, 0.5);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.8);
+}

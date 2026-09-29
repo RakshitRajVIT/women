@@ -1,0 +1,17 @@
+{
+  "name": "AegisSafety - AI Women Safety",
+  "short_name": "AegisSafety",
+  "description": "Autonomous AI Danger Detection, Safe Navigation & Guardian Tracking (Works Offline)",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090d16",
+  "theme_color": "#e11d48",
+  "icons": [
+    {
+      "src": "/shield.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
