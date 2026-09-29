@@ -84,12 +84,14 @@ class AegisDatabase extends Dexie {
 
 export const db = new AegisDatabase();
 
-// Default fallback risk zones
-export const DEFAULT_RISK_ZONES: RiskZone[] = [
-  { id: 1, name: 'Unlit Alley Precinct', lat: 23.0732, lng: 76.8561, radiusMeters: 300, riskLevel: 'HIGH', description: 'Reported poor lighting & lack of surveillance.' },
-  { id: 2, name: 'Isolated Industrial Belt', lat: 28.6250, lng: 77.2180, radiusMeters: 500, riskLevel: 'CRITICAL', description: 'High incidence zone at nighttime.' },
-  { id: 3, name: 'Construction Pass', lat: 28.6080, lng: 77.2000, radiusMeters: 250, riskLevel: 'MEDIUM', description: 'Under construction area with blocked sightlines.' }
-];
+// Dynamic risk zones generated relative to real user position
+export function getDynamicRiskZones(lat: number, lng: number): RiskZone[] {
+  return [
+    { id: 1, name: 'Unlit Alley Precinct', lat: lat + 0.002, lng: lng + 0.003, radiusMeters: 300, riskLevel: 'HIGH', description: 'Reported poor lighting & lack of surveillance.' },
+    { id: 2, name: 'Isolated Industrial Belt', lat: lat - 0.004, lng: lng + 0.005, radiusMeters: 500, riskLevel: 'CRITICAL', description: 'High incidence zone at nighttime.' },
+    { id: 3, name: 'Construction Pass Pass', lat: lat + 0.003, lng: lng - 0.004, radiusMeters: 250, riskLevel: 'MEDIUM', description: 'Under construction area with blocked sightlines.' }
+  ];
+}
 
 // Seed initial data safely
 export async function seedInitialData() {
@@ -111,7 +113,7 @@ export async function seedInitialData() {
 
     const riskZonesCount = await db.riskZones.count().catch(() => 0);
     if (riskZonesCount === 0) {
-      await db.riskZones.bulkAdd(DEFAULT_RISK_ZONES).catch(() => {});
+      await db.riskZones.bulkAdd(getDynamicRiskZones(28.6139, 77.2090)).catch(() => {});
     }
 
     const settingsCount = await db.appSettings.count().catch(() => 0);

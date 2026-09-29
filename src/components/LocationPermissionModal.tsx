@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MapPin, Navigation, ShieldCheck, CheckCircle2, AlertTriangle, RefreshCw } from 'lucide-react';
+import { MapPin, Navigation, CheckCircle2, AlertTriangle, RefreshCw } from 'lucide-react';
 
 interface LocationPermissionModalProps {
   onLocationAcquired: (coords: { lat: number; lng: number; accuracy: number }) => void;

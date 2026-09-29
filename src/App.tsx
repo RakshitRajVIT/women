@@ -10,7 +10,7 @@ import { FakeCallModal } from './components/FakeCallModal';
 import { AiDetectionControls } from './components/AiDetectionControls';
 
 import type { RiskZone } from './services/db';
-import { db, seedInitialData, DEFAULT_RISK_ZONES } from './services/db';
+import { db, seedInitialData, getDynamicRiskZones } from './services/db';
 import type { ThreatAnalysisResult } from './services/aiThreatEngine';
 import { aiThreatEngine } from './services/aiThreatEngine';
 import type { RouteOption, SafeHaven } from './services/safeRouteEngine';
@@ -71,14 +71,13 @@ export function App() {
     const initData = async () => {
       try {
         await seedInitialData();
-        const zones = await db.riskZones.toArray().catch(() => DEFAULT_RISK_ZONES);
-        setRiskZones(zones.length > 0 ? zones : DEFAULT_RISK_ZONES);
+        const zones = await db.riskZones.toArray().catch(() => []);
+        if (zones.length > 0) {
+          setRiskZones(zones);
+        }
       } catch (e) {
-        console.warn('Fallback risk zones loaded:', e);
-        setRiskZones(DEFAULT_RISK_ZONES);
+        console.warn('DB init warning:', e);
       }
-      const havens = safeRouteEngine.getNearbySafeHavens(23.0732, 76.8561);
-      setSafeHavens(havens);
     };
 
     initData();
@@ -142,13 +141,16 @@ export function App() {
     }
   }, []);
 
-  // Recalculate AI Threat Engine on location/zones update
+  // Recalculate AI Threat Engine and dynamic risk zones on location update
   useEffect(() => {
     if (!userLocation) return;
+    const dynamicZones = getDynamicRiskZones(userLocation.lat, userLocation.lng);
+    setRiskZones(dynamicZones);
+
     const res = aiThreatEngine.analyzeThreat({
       lat: userLocation.lat,
       lng: userLocation.lng,
-      riskZones,
+      riskZones: dynamicZones,
       isAudioDistress: false,
       isMotionShake: false,
       isOffline: !navigator.onLine,
@@ -158,7 +160,7 @@ export function App() {
 
     const havens = safeRouteEngine.getNearbySafeHavens(userLocation.lat, userLocation.lng);
     setSafeHavens(havens);
-  }, [userLocation, riskZones]);
+  }, [userLocation]);
 
   // Sync state to Guardian Broadcast channel
   useEffect(() => {
