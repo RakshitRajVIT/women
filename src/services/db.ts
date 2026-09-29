@@ -97,14 +97,14 @@ export async function seedInitialData() {
     const contactsCount = await db.guardianContacts.count().catch(() => 0);
     if (contactsCount === 0) {
       await db.guardianContacts.bulkAdd([
-        { name: 'Primary Guardian (+919473309705)', phone: '+919473309705', relationship: 'Family', isPrimary: true },
+        { name: 'Primary Guardian (+919552970713)', phone: '+919552970713', relationship: 'Family', isPrimary: true },
       ]).catch(() => {});
     } else {
       // Auto-purge legacy test numbers (5550192) from existing browser IndexedDB
       const allContacts = await db.guardianContacts.toArray().catch(() => []);
       for (const c of allContacts) {
-        if (c.phone.includes('+919473309705') || c.phone.includes('9473309705') || c.phone.includes('+919473309705')) {
-          await db.guardianContacts.update(c.id!, { phone: '+919473309705', name: 'Primary Guardian (+919473309705)' }).catch(() => {});
+        if (c.phone.includes('+919552970713') || c.phone.includes('9473309705') || c.phone.includes('+919552970713')) {
+          await db.guardianContacts.update(c.id!, { phone: '+919552970713', name: 'Primary Guardian (+919552970713)' }).catch(() => {});
         }
       }
     }

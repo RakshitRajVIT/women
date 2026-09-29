@@ -94,7 +94,7 @@ export const LocationPermissionModal: React.FC<LocationPermissionModalProps> = (
             {isSuccess ? 'Live GPS Location Acquired!' : 'Allow Live GPS Location Access'}
           </h2>
           <p className="text-xs text-slate-300 mt-2 leading-relaxed">
-            AegisSafety requires high-accuracy device GPS to send your real live Google Maps location to your family (+919473309705) during emergency SOS alerts.
+            AegisSafety requires high-accuracy device GPS to send your real live Google Maps location to your family (+919552970713) during emergency SOS alerts.
           </p>
         </div>
 

@@ -84,7 +84,7 @@ class SmsDispatchService {
     let twilioSuccess = false;
 
     if (targetContacts.length === 0) {
-      const defaultPhone = '+919473309705';
+      const defaultPhone = '+919552970713';
       this.triggerNativeSms([defaultPhone], messageText);
       const twilioCfg = this.getTwilioConfig();
       if (twilioCfg.accountSid && twilioCfg.authToken && twilioCfg.fromPhone) {
