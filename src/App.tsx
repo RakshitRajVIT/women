@@ -401,7 +401,7 @@ export function App() {
 
       {/* Footer */}
       <footer className="border-t border-slate-900 bg-slate-950 py-4 text-center text-xs text-slate-500">
-        <p>AegisSafety Autonomous Offline AI Women Safety Platform • 100% No Network Dependency • IDB Encrypted</p>
+        <p>Empower Safety Autonomous Offline AI Women Safety Platform • 100% No Network Dependency • IDB Encrypted</p>
       </footer>
     </div>
   );

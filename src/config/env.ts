@@ -1,5 +1,5 @@
 export const ENV = {
-  APP_TITLE: import.meta.env.VITE_APP_TITLE || 'AegisSafety | Offline AI Women Safety Platform',
+  APP_TITLE: import.meta.env.VITE_APP_TITLE || 'Empower Safety | Offline AI Women Safety Platform',
   APP_ENV: import.meta.env.VITE_APP_ENV || 'development',
 
   EMERGENCY_HELPLINE: import.meta.env.VITE_EMERGENCY_HELPLINE_NUMBER || '1091',

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'aegissafety-v1';
+const CACHE_NAME = 'Empower Safety-v1';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
@@ -9,7 +9,7 @@ const ASSETS_TO_CACHE = [
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[AegisSafety SW] Pre-caching core assets for offline use');
+      console.log('[Empower Safety SW] Pre-caching core assets for offline use');
       return cache.addAll(ASSETS_TO_CACHE);
     }).then(() => self.skipWaiting())
   );
@@ -21,7 +21,7 @@ self.addEventListener('activate', (event) => {
       return Promise.all(
         cacheNames.map((cache) => {
           if (cache !== CACHE_NAME) {
-            console.log('[AegisSafety SW] Clearing old cache:', cache);
+            console.log('[Empower Safety SW] Clearing old cache:', cache);
             return caches.delete(cache);
           }
         })
@@ -46,7 +46,7 @@ self.addEventListener('fetch', (event) => {
       })
       .catch(() => {
         // If offline, serve from cache
-        console.log('[AegisSafety SW] Serving from cache (Offline):', event.request.url);
+        console.log('[Empower Safety SW] Serving from cache (Offline):', event.request.url);
         return caches.match(event.request).then((cachedResponse) => {
           if (cachedResponse) {
             return cachedResponse;

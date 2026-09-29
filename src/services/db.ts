@@ -62,7 +62,7 @@ class AegisDatabase extends Dexie {
   appSettings!: Table<AppSettings>;
 
   constructor() {
-    super('AegisSafetyDB');
+    super('Empower SafetyDB');
     
     // Support version 1 & 2 for backwards compatibility without breaking existing DB
     this.version(1).stores({

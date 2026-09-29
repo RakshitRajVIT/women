@@ -94,7 +94,7 @@ export const LocationPermissionModal: React.FC<LocationPermissionModalProps> = (
             {isSuccess ? 'Live GPS Location Acquired!' : 'Allow Live GPS Location Access'}
           </h2>
           <p className="text-xs text-slate-300 mt-2 leading-relaxed">
-            AegisSafety requires high-accuracy device GPS to send your real live Google Maps location to your family (+919552970713) during emergency SOS alerts.
+            Empower Safety requires high-accuracy device GPS to send your real live Google Maps location to your family (+919552970713) during emergency SOS alerts.
           </p>
         </div>
 
@@ -145,7 +145,7 @@ export const LocationPermissionModal: React.FC<LocationPermissionModalProps> = (
               className="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl text-xs transition-all flex items-center justify-center gap-2"
             >
               <CheckCircle2 className="w-4 h-4" />
-              <span>Proceed to AegisSafety Dashboard</span>
+              <span>Proceed to Empower Safety Dashboard</span>
             </button>
           )}
 

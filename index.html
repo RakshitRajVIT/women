@@ -5,11 +5,11 @@
     <link rel="icon" type="image/svg+xml" href="/shield.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="#0f172a" />
-    <meta name="description" content="AegisSafety - Autonomous AI Threat Detection & Offline Women Safety Platform" />
+    <meta name="description" content="Empower Safety - Autonomous AI Threat Detection & Offline Women Safety Platform" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="manifest" href="/manifest.json" />
     <link rel="apple-touch-icon" href="/shield.svg" />
-    <title>AegisSafety | Offline AI Women Safety Platform</title>
+    <title>Empower Safety | Offline AI Women Safety Platform</title>
   </head>
   <body class="bg-slate-950 text-slate-100 overflow-x-hidden selection:bg-rose-500 selection:text-white">
     <div id="root"></div>
@@ -19,8 +19,8 @@
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('/sw.js').then(
-            (reg) => console.log('AegisSafety SW registered:', reg.scope),
-            (err) => console.log('AegisSafety SW registration failed:', err)
+            (reg) => console.log('Empower Safety SW registered:', reg.scope),
+            (err) => console.log('Empower Safety SW registration failed:', err)
           );
         });
       }
